@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Salsa&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+
+body {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    margin-top: 100px;
+    flex-direction: column;
+    height: 100%;
+    font-family: 'Salsa', cursive;
+}

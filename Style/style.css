@@ -50,10 +50,11 @@
     border-bottom-left-radius: 30px;
 }
 
-.container-box .section-img img {
+.container-box img {
     width: 100px;
     background-color: #6757d9;
     border: .5px solid #6757d9;
+    opacity: .5;
     border-radius: 50%;
     padding: 15px;
     cursor: pointer;
@@ -62,11 +63,27 @@
 
 .container-box .section-img img:hover {
     border: .5px solid #6757d9;
+    opacity: 1;
     background-color: transparent;
 }
 
 .container-box .section-img img:nth-child(2) {
     margin: 0 30px;
+}
+
+.container-box .hand-section {
+    margin-top: 32px;
+}
+
+.container-box .hand-section img {
+    background-color: transparent;
+    border: none;
+    opacity: 1;
+    cursor: auto;
+}
+
+.container-box .hand-section img:nth-child(2) {
+    transform: rotateY(180deg);
 }
 
 .container-box .results {

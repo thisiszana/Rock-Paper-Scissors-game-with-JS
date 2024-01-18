@@ -2,7 +2,9 @@
 const user = document.querySelector(".section-img").querySelectorAll("img"),
       message = document.querySelector(".msg").querySelector(".show-message"),
       computerS = document.querySelector(".cup-result"),
-      userS = document.querySelector(".user-result");
+      userS = document.querySelector(".user-result"),
+      playAgain = document.querySelector(".play-again"),
+      backHome = document.querySelector(".back-home");
 
 
 const result = ["rock", "paper", "scissors"];
@@ -54,8 +56,21 @@ const game = event => {
     const check = checkResult(userChoice, computerChoice);
     showResult(check);
 
+};
+
+const restGame = () => {
+    message.innerText = "Select";
+    computerS.innerText = 0;
+    userS.innerText = 0;
+    game();
+};
+
+const backToHome = () => {
+    window.location.assign("/index.html");
 }
 
+playAgain.addEventListener("click", restGame);
+backHome.addEventListener("click", backToHome);
 user.forEach(img => {
     img.addEventListener("click", game)
 })

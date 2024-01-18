@@ -71,6 +71,36 @@
 
 .container-box .results {
     margin: 62px 0 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    width: 100%;
+}
+
+.container-box .results .btn-box {
+    width: 100%;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container-box .results .btn-box button {
+    all: unset;
+    background-color: #6757d9;
+    border: .5px solid #6757d9;
+    color: #fff;
+    margin-top: 40px;
+    padding: 10px 15px;
+    border-radius: 15px;
+    transition: all .3s ease-in;
+    cursor: pointer;
+}
+
+.container-box .results button:hover {
+    background-color: transparent;
+    border: .5px solid #6757d9;
+    color: #6757d9;
 }
 
 .container-box .results span {

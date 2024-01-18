@@ -43,7 +43,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #fff;
     border: .5px solid #6757d9;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     padding: 32px 0 0;
     width: 500px;
     border-top-right-radius: 30px;
@@ -52,7 +54,7 @@
 
 .container-box img {
     width: 100px;
-    background-color: #6757d9;
+    background-color: #eeedfb;
     border: .5px solid #6757d9;
     opacity: .5;
     border-radius: 50%;
@@ -62,9 +64,7 @@
 }
 
 .container-box .section-img img:hover {
-    border: .5px solid #6757d9;
     opacity: 1;
-    background-color: transparent;
 }
 
 .container-box .section-img img:nth-child(2) {
@@ -82,8 +82,31 @@
     cursor: auto;
 }
 
-.container-box .hand-section img:nth-child(2) {
+/* .container-box .hand-section img:nth-child(2) {
     transform: rotateY(180deg);
+} */
+
+
+.hand-section.start .img-user {
+    transform-origin: left;
+    animation: userShake .7s ease-in infinite;
+}
+
+@keyframes userShake {
+    50% {
+        transform: rotate(10deg);
+    }
+}
+
+.hand-section.start .img-computer {
+    transform-origin: right;
+    animation: computerShake .7s ease-in infinite;
+}
+
+@keyframes computerShake {
+    50% {
+        transform: rotate(-10deg);
+    }
 }
 
 .container-box .results {
@@ -127,10 +150,42 @@
 
 .container-box .msg {
     background-color: #6757d9;
+    display: flex;
     width: 100%;
-    text-align: center;
+    justify-content: center;
     color: #fff;
     font-size: 20px;
     border-bottom-left-radius: 30px;
     padding: 20px 0;
+}
+
+.container-box .loader {
+    display: none;
+    width: 60px;
+    aspect-ratio: 2;
+    --_g: no-repeat radial-gradient(circle closest-side, #fffdfd 90%, #0000);
+    background:
+        var(--_g) 0% 50%,
+        var(--_g) 50% 50%,
+        var(--_g) 100% 50%;
+    background-size: calc(100%/3) 50%;
+    animation: l3 1s infinite linear;
+}
+
+@keyframes l3 {
+    20% {
+        background-position: 0% 0%, 50% 50%, 100% 50%
+    }
+
+    40% {
+        background-position: 0% 100%, 50% 0%, 100% 50%
+    }
+
+    60% {
+        background-position: 0% 50%, 50% 100%, 100% 0%
+    }
+
+    80% {
+        background-position: 0% 50%, 50% 50%, 100% 100%
+    }
 }

@@ -11,8 +11,8 @@
 body {
     display: flex;
     align-items: center;
-    /* justify-content: center; */
-    margin-top: 100px;
+    padding-top: 32px;
+    background-color: #eeedfb;
     flex-direction: column;
     height: 100%;
     font-family: 'Salsa', cursive;

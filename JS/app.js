@@ -1,13 +1,20 @@
 // Basic JS
 const user = document.querySelector(".section-img").querySelectorAll("img"),
-      message = document.querySelector(".msg").querySelector(".show-message"),
-      computerS = document.querySelector(".cup-result"),
-      userS = document.querySelector(".user-result"),
-      playAgain = document.querySelector(".play-again"),
-      backHome = document.querySelector(".back-home");
+    message = document.querySelector(".msg").querySelector(".show-message"),
+    computerS = document.querySelector(".cup-result"),
+    userS = document.querySelector(".user-result"),
+    playAgain = document.querySelector(".play-again"),
+    backHome = document.querySelector(".back-home"),
+    sectionImg = document.querySelectorAll(".section-img img"),
+    imgUser = document.querySelector(".img-user"),
+    computerUser = document.querySelector(".img-computer"),
+    handSection = document.querySelector(".hand-section"),
+    loader = document.querySelector(".loader");
+
 
 
 const result = ["rock", "paper", "scissors"];
+const imgSrc = ["/Image/Rock.png", "/Image/paper.png", "/Image/scissors.png"];
 const maxScore = 5;
 let userScore = 0;
 let computerScore = 0;
@@ -24,8 +31,8 @@ const checkResult = (user, computer) => {
     }
 };
 
-const showResult = res => {
-    if  (res === "player") {
+const showResult = (res) => {
+    if (res === "player") {
         message.innerText = "You won round 1!";
         userScore++
         userS.innerText = userScore;
@@ -39,8 +46,12 @@ const showResult = res => {
 }
 
 const game = event => {
+    handSection.classList.add("start");
+    message.style.display = "none";
+    loader.style.display = "flex";
     const userChoice = event.target.dataset.name;
-    
+    imgUser.src = event.target.src;
+
     if (userScore === maxScore) {
         message.innerText = "Game finished and your score was";
         return;
@@ -49,12 +60,19 @@ const game = event => {
         return;
     }
 
-    const randomComputer = Math.floor(Math.random() * result.length);
-    const computerChoice  = result[randomComputer];
+    setTimeout(() => {
+        message.style.display = "flex";
+        loader.style.display = "none";
+        handSection.classList.remove("start")
+        const randomComputer = Math.floor(Math.random() * result.length);
+        const randomSrc = imgSrc[randomComputer];
+        computerUser.src = randomSrc;
+        const computerChoice = result[randomComputer];
 
-    
-    const check = checkResult(userChoice, computerChoice);
-    showResult(check);
+
+        const check = checkResult(userChoice, computerChoice);
+        showResult(check);
+    }, 2000);
 
 };
 
@@ -67,10 +85,10 @@ const restGame = () => {
 
 const backToHome = () => {
     window.location.assign("/index.html");
-}
+};
 
 playAgain.addEventListener("click", restGame);
 backHome.addEventListener("click", backToHome);
 user.forEach(img => {
     img.addEventListener("click", game)
-})
+});
